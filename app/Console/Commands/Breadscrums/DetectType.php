@@ -45,9 +45,9 @@ class DetectType extends Command
             foreach ($hrefs->links() as $cLink) {
                 $breadcrums[] = Str::replace("http://siquanaotreemquangchau.com/", "", $cLink->getNode()->getAttribute("href"));
             }
+            if(is_null($breadcrums)) continue;
             $index = $breadcrums[0];
             $type =  $breadcrums[1];
-
             $last = last($breadcrums);
             $link->title = $metaCollection['title'];
             if($type == 'san-pham'){
