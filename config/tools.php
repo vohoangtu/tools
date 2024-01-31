@@ -1,6 +1,6 @@
 <?php
 //http://siquanaotreemquangchau.com/sitemap.xml
-$domain = 'dahoacuongbachthinh.com';
+$domain = 'phuchongdinhmiennam.com';
 $site = 'http://'.$domain.'/';
 return [
     'crawler'=> [

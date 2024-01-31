@@ -43,7 +43,7 @@ class DetectType extends Command
             $hrefs = $crawler->filter("body div.breadCrumbs a");
             $breadcrums = null;
             foreach ($hrefs->links() as $cLink) {
-                $breadcrums[] = Str::replace("http://siquanaotreemquangchau.com/", "", $cLink->getNode()->getAttribute("href"));
+                $breadcrums[] = Str::replace("https://diennuochuynhchuong.com/", "", $cLink->getNode()->getAttribute("href"));
             }
             if(is_null($breadcrums)) continue;
             $index = $breadcrums[0];
@@ -61,6 +61,15 @@ class DetectType extends Command
                         $link->sub = $this->getMan($i);
                     }
                 }
+
+                if($link->sub == 'cat'){
+                    preg_match("/\"@type\": \"Product\"/", $link->content, $match);
+                    if(!empty($match)){
+                        $link->sub = 'detail';
+                        $link->cat = null;
+                    }
+                }
+
             }else{
                 $link->type = $type;
                 $link->source = 'news';

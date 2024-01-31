@@ -51,7 +51,6 @@ class DetectDetail extends Command
                 'date_updated' => time(),
             ]);
         }
-
         $allProductCats = $links->where("sub", "=", "cat");
         $mapCat = [];
         foreach ($allProductCats as $cat){
@@ -74,7 +73,7 @@ class DetectDetail extends Command
 
             $id_product = DB::connection("mysql")->table("table_product")->insertGetId([
                 'id_list' => $mapList[$product->list],
-                'id_cat' => $mapCat[$product->cat],
+                'id_cat' => $mapCat[$product->cat] ?? null,
                 'namevi' => $product->title,
                 'descvi' => $description ?? '',
                 'contentvi' => $cotnent ?? '',
